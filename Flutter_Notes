@@ -1,0 +1,233 @@
+////////////////////// Hello World \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  print('Hello, World!');
+}
+
+
+////////////////////// Variables in Dart \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  // Labeling and putting things in the jars 
+  // (Assigning values to the variables)
+  var ageJar = 25;
+  var nameJar = 'Bob';
+
+  // Using the jars (Accessing variable's content)
+  print('Name: $nameJar, Age: $ageJar');
+}
+
+
+////////////////////// Data Types \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  // Labeling and putting things in the jars (Assigning values to the variables)
+  int ageJar = 25;
+  String nameJar = 'Alice';
+  bool isCookingJar = true;
+
+  // Using the jars (Accessing variable's content)
+  print('Name: $nameJar, Age: $ageJar');
+
+  // Checking the bool jar (Using bool variable)
+  if (isCookingJar) {
+    print('Time to cook!');
+  } else {
+    print('Relax, no cooking today.');
+  }
+}
+
+
+////////////////////// Functions \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  // Calling the function (Asking the chef to cook)
+  chefBiryani();
+}
+
+// Defining the function (Chef's recipe)
+void chefBiryani() {
+  print('Preparing Biryani!'); 
+  // Chef is doing his magic
+  print('Biryani is ready!'); 
+}
+
+
+////////////////////// Loops \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  // Grabbing Pizza Slices (For Loop)
+  for (var slice = 1; slice <= 4; slice++) {
+    print('Enjoying slice $slice'); // Grab four slices one by one
+  }
+}
+
+
+////////////////////// Lists \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  // Creating a Shopping List (List)
+  List<String> shoppingList = ['apples', 'bananas'];
+
+  // Adding More Items (List Operations)
+  shoppingList.add('milk');
+  shoppingList.add('bread');
+
+  // Checking Items Off (Accessing List Items)
+  for (var item in shoppingList) {
+    print('Picked up: $item');
+  }
+}
+
+
+////////////////////// Maps \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  // Creating a Simple Word List (Map)
+  var wordList = {
+    'Flutter': 'A toolkit for building apps.',
+    'Dart': 'A programming language for Flutter.',
+  };
+
+  // Adding New Words
+  wordList['Map'] = 'A way to store words and meanings.';
+
+  // Finding Meanings
+  print('Meaning of Flutter: ' + wordList['Flutter']);
+  print('Meaning of Map: ${wordList['Map']}');
+}
+
+
+////////////////////// Classes and Objects \\\\\\\\\\\\\\\\\\\\\\
+// Creating a Blueprint (Class)
+class House {
+  String color;
+  int numRooms;
+
+  // Constructor
+  House(this.color, this.numRooms);
+
+  // Method
+  void displayHouseInfo() {
+    print('This house is $color and has $numRooms rooms.');
+  }
+}
+
+void main() {
+  // Building the House (Object)
+  var myHouse = House('Blue', 3);
+
+  // Displaying House Info (Using the Object)
+  myHouse.displayHouseInfo();
+
+  // Creating Multiple Houses (Multiple Objects)
+  var neighborHouse = House('Green', 4);
+  neighborHouse.displayHouseInfo();
+}
+
+
+////////////////////// Inheritance \\\\\\\\\\\\\\\\\\\\\\
+class Animal {
+  String name;
+
+  Animal(this.name);
+
+  void makeSound() {
+    print('Some generic animal sound');
+  }
+}
+
+// Inheritance
+class Lion extends Animal {
+  Lion(String name) : super(name);
+
+  @override
+  void makeSound() {
+    print('Roar!');
+  }
+}
+
+void main() {
+  var lion = Lion('Simba');
+  lion.makeSound();
+}
+
+
+////////////////////// Synchronus Programming \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  print('Start cooking!');
+  chopVegetables();
+  boilWater();
+  fryChicken();
+  print('Food is ready!');
+}
+
+void chopVegetables() {
+  print('Chopping vegetables...');
+  // Takes some time
+  print('Vegetables are chopped!');
+}
+
+void boilWater() {
+  print('Boiling water...');
+  // Takes some time
+  print('Water is boiled!');
+}
+
+void fryChicken() {
+  print('Frying chicken...');
+  // Takes some time
+  print('Chicken is fried!');
+}
+
+
+////////////////////// Asynchronus Programming \\\\\\\\\\\\\\\\\\\\\\
+void main() async {
+  print('Start cooking!');
+  await chopVegetables();
+  await boilWater();
+  await fryChicken();
+  print('Food is ready!');
+}
+
+Future<void> chopVegetables() async {
+  print('Chopping vegetables...');
+  // Takes some time
+  print('Vegetables are chopped!');
+}
+
+Future<void> boilWater() async {
+  print('Boiling water...');
+  // Takes some time
+  print('Water is boiled!');
+}
+
+Future<void> fryChicken() async {
+  print('Frying chicken...');
+  // Takes some time
+  print('Chicken is fried!');
+}
+
+
+////////////////////// Futures \\\\\\\\\\\\\\\\\\\\\\
+void main() {
+  print('Start cooking!');
+  
+  // Setting a Timer (Creating a Future)
+  Future cookiesFuture = bakeCookies();
+
+  // Continuing Other Tasks (Non-Blocking)
+  chopVegetables();
+  
+  // Checking Timer (Handling the Future)
+  cookiesFuture.then((cookies) {
+    print('Cookies are done: $cookies');
+    print('Food is ready!');
+  });
+}
+
+Future<String> bakeCookies() async {
+  print('Baking cookies...');
+  // Simulating baking time
+  await Future.delayed(Duration(seconds: 3));
+  return 'Chocolate Chip Cookies';
+}
+
+void chopVegetables() {
+  print('Chopping vegetables...');
+  // Takes some time
+  print('Vegetables are chopped!');
+}
